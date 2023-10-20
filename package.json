@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "sass": "sass scss:css -w --no-source-map",
-    "test": "jest --watchAll --coverage",
+    "test": "jest --watchAll",
     "test:prod": "jest --watchAll --coverage --watchAll=false -- passWithNoTests",
     "test:coverage": "jest --watchAll --coverage",
     "prepare": "husky install"
