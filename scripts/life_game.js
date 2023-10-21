@@ -7,14 +7,20 @@ const createArray = (val) => {
     const line = [];
     for (let j = 0; j < val; j++ ) {
       const randomnum = Math.round(Math.random());
-      line.push(randomnum);
+        if (randomnum === 1) {
+
+          line.push("🍌");
+        } else {
+          line.push("💀")
+        }
+      
     }
     newarr.push(line);
   }
   return newarr;
 }
 
-const gameboard = createArray(10);
+const gameboard = createArray(5);
 
 
 const checkAround = (x, y, gameboard) => {
@@ -23,7 +29,7 @@ const checkAround = (x, y, gameboard) => {
 	for (let i = x - 1; i <= x + 1; i++) {
 		for (let j = y - 1; j <= y + 1; j++) {
 			if ((i !== x) || (j !== y)) {
-				if (gameboard[i] && gameboard[i][j] === 1) {
+				if (gameboard[i] && gameboard[i][j] === '🍌') {
 					alive++;
 				}
 			}
@@ -36,37 +42,33 @@ const checkAround = (x, y, gameboard) => {
 
 const lifeGame = (gameboard) => {
   let obj = structuredClone(gameboard);
+  const size = obj.length;
 	let status;
-	for (let i = 0; i <= 9; i++) {
-		for (let j = 0; j <= 9; j++) {
+	for (let i = 0; i < size; i++) {
+		for (let j = 0; j < size; j++) {
 			status = checkAround(i, j, gameboard);
-			if (gameboard[i][j] === 0) {
+			if (gameboard[i][j] === '💀') {
 				if (status === 3) {
-					obj[i][j] = 1;
+					obj[i][j] = "🍌";
 				}
 			} else if (status < 2 || status > 3) {
-				  obj[i][j] = 0;
+				  obj[i][j] = '💀';
 			}
 		}
 	}
 
 return obj;
 };
-
-
+// lifeGame(gameboard);
 
 const playGame = (num, gameboard) => {
   console.table(gameboard);
-  // const obj = structuredClone(gameboard);
-
   if (num > 0) {
+    const newTable = lifeGame(gameboard);
     setTimeout(() => {
-      const newTable = lifeGame(gameboard);
       playGame(num - 1, newTable);
-    }, 1000);
+    }, 800);
   }
 };
 
-
-
-playGame(10, gameboard);
+playGame(5, gameboard);
