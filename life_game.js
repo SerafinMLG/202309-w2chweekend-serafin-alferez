@@ -1,10 +1,24 @@
 
-const gameboard = [[1, 1, 1, 0], [1, 1, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
-console.table(gameboard);
+// const gameboard = [[0, 1, 1, 1], [1, 1, 0, 1], [1, 0, 0, 1], [0, 1, 1, 1]];
 
-const checkAround = (x, y) => {
+const createArray = (val) => {
+  const newarr = [];
+  for (let i = 0; i < val; i++ ) {
+    const line = [];
+    for (let j = 0; j < val; j++ ) {
+      const randomnum = Math.round(Math.random());
+      line.push(randomnum);
+    }
+    newarr.push(line);
+  }
+  return newarr;
+}
+
+const gameboard = createArray(10);
+
+
+const checkAround = (x, y, gameboard) => {
 	let alive = 0;
-	let dead = 0;
 
 	for (let i = x - 1; i <= x + 1; i++) {
 		for (let j = y - 1; j <= y + 1; j++) {
@@ -21,17 +35,17 @@ const checkAround = (x, y) => {
 };
 
 const lifeGame = (gameboard) => {
-  let obj = structuredClone(gameboard)
+  let obj = structuredClone(gameboard);
 	let status;
-	for (let i = 0; i <= 3; i++) {
-		for (let j = 0; j <= 3; j++) {
-			status = checkAround(i, j);
+	for (let i = 0; i <= 9; i++) {
+		for (let j = 0; j <= 9; j++) {
+			status = checkAround(i, j, gameboard);
 			if (gameboard[i][j] === 0) {
 				if (status === 3) {
 					obj[i][j] = 1;
 				}
 			} else if (status < 2 || status > 3) {
-				obj[i][j] = 0;
+				  obj[i][j] = 0;
 			}
 		}
 	}
@@ -40,17 +54,19 @@ return obj;
 };
 
 
-const playGame = (num) => {
-  let newtable = []
-  for (let i = 0; i <= num ; i ++) {
-    newtable = lifeGame(gameboard);
-		console.table(newtable);
 
+const playGame = (num, gameboard) => {
+  console.table(gameboard);
+  // const obj = structuredClone(gameboard);
+
+  if (num > 0) {
+    setTimeout(() => {
+      const newTable = lifeGame(gameboard);
+      playGame(num - 1, newTable);
+    }, 1000);
   }
-  // setTimeout(playGame,1000);
-
-
 };
 
-playGame(20);
 
+
+playGame(10, gameboard);
