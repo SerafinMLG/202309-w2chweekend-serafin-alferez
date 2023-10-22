@@ -6,9 +6,9 @@ export const createArray = (val) => {
     for (let j = 0; j < val; j++ ) {
       const randomnum = Math.round(Math.random());
         if (randomnum === 1) {
-          line.push("😉");
+          line.push('😉');
         } else {
-          line.push("💀")
+          line.push('💀')
         }
     }
     newarr.push(line);
@@ -17,7 +17,6 @@ export const createArray = (val) => {
 }
 
 export const gameboard = createArray(10);
-
 
 export const checkAround = (x, y, gameboard) => {
 	let alive = 0;
