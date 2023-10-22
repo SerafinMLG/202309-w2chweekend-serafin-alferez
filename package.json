@@ -14,6 +14,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "prettier": {
+    "singleQuote": true
+  },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.23.0",
     "@types/jest": "^29.5.6",
