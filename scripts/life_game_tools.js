@@ -55,7 +55,7 @@ export const lifeGame = (gameboard) => {
 
 return obj;
 };
-// lifeGame(gameboard);
+
 
 export const playGame = (num, gameboard) => {
   console.clear();
