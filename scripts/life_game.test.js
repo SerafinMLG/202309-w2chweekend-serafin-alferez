@@ -62,8 +62,8 @@ describe('Given table position, check numbes', () => {
 describe('Given a value check the lentgth of the created arrey', () => {
 
   test('should first show the length ', () => {
-    const val = 5;
-    const expected = 5;
+    const val = 20;
+    const expected = 20;
     const result = createArray(val);
     expect(result.length).toBe(expected);
   })
