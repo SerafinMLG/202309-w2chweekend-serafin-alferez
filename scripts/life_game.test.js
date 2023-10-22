@@ -2,7 +2,7 @@ import { lifeGame } from "./life_game_tools.js"
 import { checkAround } from "./life_game_tools.js"
 import { createArray } from "./life_game_tools.js";
 
-describe('Given array', () => {
+describe('Given array status, check the next status ', () => {
   test('should first show the array like this ', () => {
     const testData = [
       [ '💀', '🍌', '🍌', '💀', '💀' ],
