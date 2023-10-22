@@ -45,17 +45,16 @@ export const lifeGame = (gameboard) => {
 			status = checkAround(i, j, gameboard);
 			if (gameboard[i][j] === '💀') {
 				if (status === 3) {
-					obj[i][j] = "😉";
+					obj[i][j] = '😉';
 				}
 			} else if (status < 2 || status > 3) {
-				  obj[i][j] = '💀';
+          obj[i][j] = '💀';
 			}
 		}
 	}
 
 return obj;
 };
-
 
 export const playGame = (num, gameboard) => {
   console.clear();
